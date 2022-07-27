@@ -1,0 +1,171 @@
+
+
+<head>
+
+	<title>The Akikodjiwan Historical Webmap</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript"></script>
+
+    <style type="text/css">#mapid {
+    width:960px;
+    height:700px;
+    }
+    h1 {
+    color: #191970;
+    font-size: 24px;
+    font-family: verdana;
+    }
+    h2 {
+    color: #191970;
+    font-size: 18px;
+    font-family: verdana;
+    }
+    h3 {
+    color: #191970;
+    font-size: 16px;
+    font-family: verdana;
+    }
+    p {
+    color: #2F4F4F;
+    font-family: verdana;
+		fon-size: 14px;
+    }
+    li {
+    color: #2F4F4F;
+    font-family: verdana;
+    }
+    th {
+    text-align: right;
+    font-family: verdana;
+    color: #2F4F4F;
+    }
+    td {
+    text-align: right;
+    font-family: verdana;
+    color: #2F4F4F;
+    }
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+<h3>The Akikodjiwan Historical Webmap</h3>
+
+<p>Click on the 'layer' icon in the upper righthand corner of the web map to turn on and toggle between different historic maps of the falls.</p>
+
+</header>
+
+<div id="mapid" style="width: 600px; height: 400px;"></div>
+<script type="text/javascript">
+
+// add tile maps for background
+// base map tiles:
+var basemap = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+})
+// additional maps:
+var 1801 = L.tileLayer('https://mapwarper.net/maps/tile/66209/{z}/{x}/{y}.png')
+var 1819 = L.tileLayer('https://mapwarper.net/maps/tile/66204/{z}/{x}/{y}.png')
+var 1825 = L.tileLayer('https://mapwarper.net/maps/tile/61013/{z}/{x}/{y}.png')
+var 1829 = L.tileLayer('https://mapwarper.net/maps/tile/66210/{z}/{x}/{y}.png')
+var 1852 = L.tileLayer('https://mapwarper.net/maps/tile/61032/{z}/{x}/{y}.png')
+var 1857 = L.tileLayer ('https://mapwarper.net/maps/tile/61034/{z}/{x}/{y}.png')
+
+
+// base map
+var baseMaps = {
+   "Base map": basemap
+};
+
+// markers
+// 1801 map markers
+// Good variable naming classification can make this code more readable
+var 1801_marker_1= L.marker([45.4200, -75.7211]).bindPopup('<h3>The Chaudière Falls</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1801_marker_2= L.marker([45.4210, -75.7125]).bindPopup('<h3>Victoria Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1801_marker_3= L.marker([45.4162, -75.7171]).bindPopup('<h3>LeBreton Flats Park</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1801_marker_4= L.marker([45.4191, -75.7179]).bindPopup('<h3>Albert Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1801_marker_5= L.marker([45.4198, -75.7189]).bindPopup('<h3>Chaudière Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+
+// Create a layer group to hold the tile map and the markers
+// https://leafletjs.com/examples/layers-control/
+var 1801LayerGroup = L.layerGroup([1801, 1801_marker_1, 1801_marker_2, 1801_marker_3, 1801_marker_4, 1801_marker_5]);
+
+var 1819_marker_1= L.marker([45.4200, -75.7211]).bindPopup('<h3>The Chaudière Falls</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1819_marker_2= L.marker([45.4210, -75.7125]).bindPopup('<h3>Victoria Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1819_marker_3= L.marker([45.4162, -75.7171]).bindPopup('<h3>LeBreton Flats Park</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1819_marker_4= L.marker([45.4191, -75.7179]).bindPopup('<h3>Albert Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1819_marker_5= L.marker([45.4198, -75.7189]).bindPopup('<h3>Chaudière Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+
+var 1819LayerGroup = L.layerGroup([1819, 1819_marker_1, 1819_marker_2, 1819_marker_3, 1819_marker_4, 1819_marker_5]);
+
+var 1825_marker_1= L.marker([45.4200, -75.7211]).bindPopup('<h3>The Chaudière Falls</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1825_marker_2= L.marker([45.4210, -75.7125]).bindPopup('<h3>Victoria Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1825_marker_3= L.marker([45.4162, -75.7171]).bindPopup('<h3>LeBreton Flats Park</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1825_marker_4= L.marker([45.4191, -75.7179]).bindPopup('<h3>Albert Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1825_marker_5= L.marker([45.4198, -75.7189]).bindPopup('<h3>Chaudière Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+
+var 1825LayerGroup = L.layerGroup([1825, 1825_marker_1, 1825_marker_2, 1825_marker_3, 1825_marker_4, 1825_marker_5]);
+
+var 1829_marker_1= L.marker([45.4200, -75.7211]).bindPopup('<h3>The Chaudière Falls</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1829_marker_2= L.marker([45.4210, -75.7125]).bindPopup('<h3>Victoria Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1829_marker_3= L.marker([45.4162, -75.7171]).bindPopup('<h3>LeBreton Flats Park</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1829_marker_4= L.marker([45.4191, -75.7179]).bindPopup('<h3>Albert Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1829_marker_5= L.marker([45.4198, -75.7189]).bindPopup('<h3>Chaudière Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+
+var 1829LayerGroup = L.layerGroup([1829, 1829_marker_1, 1829_marker_2, 1829_marker_3, 1829_marker_4, 1829_marker_5]);
+
+var 1852_marker_1= L.marker([45.4200, -75.7211]).bindPopup('<h3>The Chaudière Falls</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1852_marker_2= L.marker([45.4210, -75.7125]).bindPopup('<h3>Victoria Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1852_marker_3= L.marker([45.4191, -75.7179]).bindPopup('<h3>Albert Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1852_marker_4= L.marker([45.4198, -75.7189]).bindPopup('<h3>Chaudière Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+
+var 1852LayerGroup = L.layerGroup([1852, 1852_marker_1, 1852_marker_2, 1852_marker_3, 1852_marker_4]);
+
+var 1857_marker_1= L.marker([45.4200, -75.7211]).bindPopup('<h3>The Chaudière Falls</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1857_marker_2= L.marker([45.4210, -75.7125]).bindPopup('<h3>Victoria Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1857_marker_3= L.marker([45.4191, -75.7179]).bindPopup('<h3>Albert Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+var 1857_marker_4= L.marker([45.4198, -75.7189]).bindPopup('<h3>Chaudière Island</h3><p>Lorem ipsum dolor<p>').openPopup();
+
+var 1857LayerGroup = L.layerGroup([1857, 1857_marker_1, 1857_marker_2, 1857_marker_3, 1857_marker_4]);
+
+// overlay maps - add the layer groups
+var overlayMaps = {
+	  "1801": 1801LayerGroup,
+    "1819": 1819LayerGroup,
+    "1825": 1825LayerGroup,
+		"1829": 1829LayerGroup,
+    "1852": 1852LayerGroup,
+    "1857": 1857LayerGroup
+}
+var myMap = L.map('mapid', {
+  center: [45.4205, -75.7213],
+  zoom: 13,
+  layers:[basemap]
+});
+
+L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+
+
+
+</script>
+
+</body>
+
+<footer>
+
+<p><small>Created by Samuel Mickelson</small></p>
+<p><small>Last modified July 27, 2022</small></p>
+<p><small>Thank you to Dr. Shawn Graham and Jeff Blackadar for assistance with Leaflet.</small></p>
+<p><small>Thank you to Steve Yeates for assistance with georectification.</small></p>
+</footer>
+
+</html>
